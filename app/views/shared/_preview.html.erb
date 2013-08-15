@@ -1,0 +1,15 @@
+<% frame_only ||= false %>
+<% size ||= '' %>
+<iframe src="<%= play_user_slide_path(slide.user, slide, iframe: 1) %>" class="preview_frame preview_<%= size %>"></iframe>
+<% unless frame_only %>
+  <div class="btn-group btn-group-justified">
+    <%= link_to play_user_slide_path(slide.user, slide), class: 'btn btn-default' do %><i class="icon-resize-full"></i> <%= t(:full) %><% end %>
+    <% if false %>
+    <%= link_to download_user_slide_path(slide.user, slide), class: 'btn btn-default' do %><i class="icon-download-alt"></i> <%= t(:download) %><% end %>
+    <% end %>
+    <%= link_to plain_user_slide_path(slide.user, slide), class: 'btn btn-default' do %><i class="icon-file-text-alt"></i> <%= t(:plain) %><% end %>
+    <% if can_edit?(slide) %>
+      <%= link_to edit_user_slide_path(slide.user, slide), class: 'btn btn-default' do %><i class="icon-pencil"></i> <%= t(:edit) %><% end %>
+    <% end %>
+  </div>
+<% end %>

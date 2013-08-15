@@ -1,0 +1,11 @@
+<li class="media">
+  <%= link_to comment.user, class: 'pull-left' do %> 
+    <%= image_tag comment.user.avatar(size: 64), class: 'media-object img-circle' %>
+  <% end %>
+  <div class="media-body">
+    <!--h4 class="media-heading"></h4-->
+    <pre><%= comment.comment %></pre>
+    <p class="text-muted">
+      <small><%= time_ago(comment.created_at) %></small>
+    </p>
+  </div>

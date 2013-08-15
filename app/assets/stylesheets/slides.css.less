@@ -1,0 +1,200 @@
+// Place all the styles related to the slides controller here.
+// They will automatically be included in application.css.
+// You can use Less here: http://lesscss.org/
+
+@import "bootstrap/less/mixins";
+@import "bootstrap/less/variables";
+@import "bootstrap/less/scaffolding";
+@import "bootstrap/less/thumbnails";
+
+body.slides {
+
+  .options {
+    display: none;
+  }
+  &.new,
+  &.create {
+    .options {
+      display: block;
+    }
+  }
+
+  .sc-panel {
+    margin-bottom: 10px;
+    .panel-heading {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .btn-toolbar {
+      opacity: 0;
+      .transition(opacity ease 0.3s);
+      margin-top: 5px;
+
+      a {
+        text-decoration: none;
+        i {
+          font-size: 18px;
+        }
+      }
+    }
+    &:hover {
+      .btn-toolbar {
+        opacity: 1.0;
+      }
+    }
+    .items {
+      li {
+        margin: 5px 0;
+      }
+    }
+    .records {
+      margin-top: 10px;
+    }
+  }
+
+  .insert {
+    position: relative;
+
+    margin-bottom: 10px;
+    height: 20px;
+
+    .navbar {
+      display: none;
+      width: 100% !important;
+    }
+
+    .insert_btn {
+      position: absolute;
+      left: -2.6em;
+      top: -0.6em;
+      display: none;
+    }
+    @media screen and (max-width: 767px) {
+      .insert_btn {
+        left: -1.3em;
+      }
+    } 
+
+    hr {
+      display: none;
+    }
+
+    &:hover {
+      .insert_btn {
+        display: inline;
+      }
+      hr {
+        display: block;
+      }
+    }
+    &.active {
+      margin-bottom: 40px;
+      .insert_btn,
+      hr {
+        display: none;
+      }
+    }
+    .insert_btn:hover, 
+    .insert_btn:active {
+       display: inline;
+    }
+  }
+
+  &.preview,
+  &.play,
+  &.blank {
+    padding-top: 0;
+
+    .deck-container {
+      overflow-y: auto;
+    }
+    .copyright {
+      position: absolute;
+      bottom: 1em;
+      right: 1em;
+    }
+    .about {
+      h1 {
+        line-height: 1;
+        img {
+          margin-bottom: 0;
+          .img-thumbnail;
+        }
+      }
+    }
+    .btns {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 12px;
+      width: 100%;
+      z-index: 4;
+      .btn {
+        border-radius: 0;
+      }
+      .share {
+        margin-top: 10px;
+      }
+      .share,
+      .btn {
+        .transition(opacity ease 0.3s);
+        opacity: 0.0; 
+      }
+      &.active {
+        .share,
+        .btn {
+          opacity: 0.8; 
+        }
+      }
+      &:hover {
+        .share,
+        .btn {
+          opacity: 1.0; 
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .page_nav {
+      &.page_nav.affix-top {
+        position: absolute;
+        top: 74px;
+        left: 0px;
+      }
+      &.affix {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+      }
+      .nav > li > a {
+        border-radius: 0;
+        padding: 5px 10px;
+        border: none;
+      }
+    }
+  }
+
+  .comment_list {
+    pre {
+      background: #fff;
+    }
+  }
+
+  .slide_info {
+    margin-top: 20px;
+  }
+
+  .image_list {
+    li {
+      padding-left: 0;
+      padding-right: 10px;
+      line-height: 70px;
+      img {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+
+}

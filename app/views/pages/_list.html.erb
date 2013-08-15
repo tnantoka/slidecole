@@ -1,0 +1,7 @@
+<h2><%= page.title %></h2>
+<p><%= render_md(page.content[:comment]) %></p>
+<ul>
+  <% page.content[:items].each do |item| %>
+    <li><%= render_md(item) %>
+  <% end %>
+</ul>

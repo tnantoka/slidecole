@@ -1,0 +1,20 @@
+<%= JST['templates/_title']({ model: model }) %>
+<p>
+  <textarea name="slide[pages_attributes][<%= model.get('order') %>][content][comment]" class="form-control input-sm" placeholder="<%= I18n.t('placeholder.comment') %>" data-content="comment" rows="2"><%= model.get('content').comment %></textarea>
+</p>
+<p>
+  <div class="input-group">
+    <input type="text" name="slide[pages_attributes][<%= model.get('order') %>][content][url]" class="form-control input-sm js_image_url" value="<%= model.get('content').url %>" placeholder="<%= I18n.t('placeholder.url') %>" data-content="url">
+    <span class="input-group-btn">
+      <a href="#modal_image" data-toggle="modal" class="btn btn-default btn-sm"><i class="icon-upload-alt"></i></a>
+    </span>
+  </div>
+</p>
+<div class="btn-group">
+  <a href="#" class="btn btn-default btn-sm js_image_prev"><i class="icon-chevron-left"></i></a>
+  <a href="#" class="btn btn-default btn-sm js_image_refresh"><i class="icon-refresh"></i></a>
+  <a href="#" class="btn btn-default btn-sm js_image_next"><i class="icon-chevron-right"></i></a>
+</div>
+<ul class="list-inline image_list">
+</ul>
+

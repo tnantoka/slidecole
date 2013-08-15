@@ -1,0 +1,16 @@
+<%= JST['templates/_title']({ model: model }) %>
+<p>
+  <textarea name="slide[pages_attributes][<%= model.get('order') %>][content][comment]" class="form-control input-sm" placeholder="<%= I18n.t('placeholder.comment') %>" data-content="comment" rows="2"><%= model.get('content').comment %></textarea>
+</p>
+<ul class="list-unstyled items">
+  <% _.each(model.get('content').items, function(item, i) { %>
+    <li>
+      <div class="input-group">
+        <input type="text" name="slide[pages_attributes][<%= model.get('order') %>][content][items][]" class="form-control input-sm" value="<%= item %>" placeholder="<%= I18n.t('placeholder.item') %>" data-content="items" data-index="<%= i %>">
+        <span class="input-group-btn">
+          <a href="#" class="btn btn-danger btn-sm js_list_delete" data-index="<%= i %>"><i class="icon-remove"></i></a>
+        </span>
+      </div>
+  <% }) %>
+  <li class="text-center"><a href="#" class="btn btn-link btn-sm btn-block js_list_add"><i class="icon-plus"></i></a>
+</ul>

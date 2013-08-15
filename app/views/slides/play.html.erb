@@ -1,0 +1,114 @@
+<!doctype html>
+<meta charset="UTF-8">
+<% if params[:iframe].blank? %>
+<title><%= "#{@slide.title} - #{@slide.user.username} - #{t(:brand)}" %></title>
+<% end %>
+<meta name="viewport" content="width=1024">
+
+<%= stylesheet_link_tag "/deck.js/core/deck.core", media: "all" %>
+<%= stylesheet_link_tag "/deck.js/extensions/goto/deck.goto", media: "all" %>
+<%= stylesheet_link_tag "/deck.js/extensions/menu/deck.menu", media: "all" %>
+<%= stylesheet_link_tag "/deck.js/extensions/navigation/deck.navigation", media: "all" %>
+<%= stylesheet_link_tag "/deck.js/extensions/status/deck.status", media: "all" %>
+<%= stylesheet_link_tag "/deck.js/extensions/hash/deck.hash", media: "all" %>
+
+<%= stylesheet_link_tag "/deck.js/themes/style/#{params[:theme].presence || 'default'}", media: "all", class: 'js_theme_link' %>
+<%= stylesheet_link_tag "/deck.js/themes/transition/#{params[:transition].presence || 'horizontal-slide'}", media: "all", class: 'js_transition_link' %>
+
+<%= stylesheet_link_tag "application", media: "all" %>
+</head>
+
+<body class="<%= controller.controller_name %> <%= controller.action_name %>">
+
+<article class="deck-container">
+  <% @pages.each do |page| %>
+    <%= render page %>   
+  <% end %>
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</article>
+
+<% if params[:iframe].blank? %>
+<div class="btns js_btns active">
+  <div class="row">
+    <% unless @slide.new_record? %>
+    <div class="<%= col(6) %> share">
+      <div class="row">
+        <div class="<%= col(3) %> text-right">
+          <div class="fb-like" data-href="<%= user_slide_url(@slide.user, @slide) %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
+        </div>
+        <div class="<%= col(3) %> ">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= user_slide_url(@slide.user, @slide) %>" data-lang="en">Tweet</a>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="<%= col(6) %> text-right">
+      <div class="btn-group">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <%= t(:theme) %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu text-left">
+            <li><a href="#" class="js_theme" data-theme="default">Default</a>
+            <li><a href="#" class="js_theme" data-theme="web-2.0">Web 2.0</a>
+            <li><a href="#" class="js_theme" data-theme="swiss">Swiss</a>
+            <li><a href="#" class="js_theme" data-theme="neon">Neon</a>
+            <li><a href="#" class="js_theme" data-theme="mnml">mnml</a>
+            <li><a href="#" class="js_theme" data-theme=""><%= t(:none) %></a>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <%= t(:transition) %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu text-left">
+            <li><a href="#" class="js_transition" data-transition="horizontal-slide">Horizontal</a>
+            <li><a href="#" class="js_transition" data-transition="vertical-slide">Vertical</a>
+            <li><a href="#" class="js_transition" data-transition="fade">Fade</a>
+            <li><a href="#" class="js_transition" data-transition=""><%= t(:none) %></a>
+          </ul>
+        </div>
+        <% unless @slide.new_record? %>
+        <%= link_to [@slide.user, @slide], class: "btn btn-default" do %><i class="icon-resize-small"></i><% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "/deck.js/core/deck.core" %>
+<%= javascript_include_tag "/deck.js/extensions/hash/deck.hash" %>
+<%= javascript_include_tag "/deck.js/extensions/menu/deck.menu" %>
+<%= javascript_include_tag "/deck.js/extensions/goto/deck.goto" %>
+<%= javascript_include_tag "/deck.js/extensions/status/deck.status" %>
+<%= javascript_include_tag "/deck.js/extensions/navigation/deck.navigation" %>
+
+<% if Rails.env.production? %>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42826528-1', 'slidecole.com');
+  ga('send', 'pageview');
+</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<% end %>
+
+<body>

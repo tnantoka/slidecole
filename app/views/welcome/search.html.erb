@@ -1,0 +1,45 @@
+<% content_for(:title) { params[:q] } %>
+
+<div class="row">
+  <div class="<%= col(12) %>">
+    <h1 class="page-header sc-header">
+      <%= t(:search_results, query: params[:q]) %>
+    </h1>
+
+    <ul class="media-list">
+      <% @slides.each do |slide| %>
+        <li class="media">
+          <%= link_to slide.user, class: 'pull-left' do %>
+            <%= image_tag slide.user.avatar(size: 64), class: 'media-object img-thumbnail' %>
+          <% end %>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to [slide.user, slide] do %>
+                <%= highlight(slide.title, Slide.split_query(params[:q])) %>
+                <small>
+                  <%= highlight(slide.user.username, Slide.split_query(params[:q])) %>
+                  /
+                  <%= highlight(slide.to_param, Slide.split_query(params[:q])) %>
+                </small>
+              <% end %>
+            </h4>
+            <p>
+              <small>
+                <%= time_ago(slide.created_at) %>
+                <i class="icon-eye-open"></i> <%= slide.impressions_count %>
+                <i class="icon-comment"></i> <%= slide.comments.size %> 
+              </small>
+            </p>
+            <p>
+              <%= highlight(truncate(slide.summary, length: 255), Slide.split_query(params[:q])) %>
+            </p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+    <% # entry_name is for not found %>
+    <%= page_entries_info(@slides, entry_name: Slide.model_name.human) %>
+    <%= paginate @slides, param_name: :p %>
+  </div>
+</div>

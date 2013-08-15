@@ -1,0 +1,16 @@
+<div class="panel entry">
+  <h3 class="page-header">
+    <%= link_to [slide.user, slide] do %>
+      <%= slide.title %>
+      <small>
+        <%= time_ago(slide.created_at) %>
+        <i class="icon-eye-open"></i> <%= slide.impressions_count %>
+        <i class="icon-comment"></i> <%= slide.comments.size %> 
+      </small>
+    <% end %>
+  </h3>
+  <%= render 'shared/preview', slide: slide, frame_only: true, size: 'blog' %>
+  <p class="text-right">
+    <%= link_to play_user_slide_path(slide.user, slide), class: 'btn btn-link' do %><i class="icon-resize-full"></i> <%= t(:full) %><% end %>
+  </p>
+</div>

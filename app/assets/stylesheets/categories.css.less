@@ -1,0 +1,24 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Less here: http://lesscss.org/
+
+@import "bootstrap/less/variables";
+@import "bootstrap/less/mixins";
+@import "bootstrap/less/list-group";
+
+body.categories {
+  .active_item {
+    // from a.list-group-item.active 
+
+    // Active class on item itself, not parent
+    z-index: 2; // Place active items above their siblings for proper border styling
+    color: @list-group-active-color;
+    background-color: @list-group-active-bg;
+    border-color: @list-group-active-border;
+
+    // Force color to inherit for custom content
+    > a {
+      color: inherit;
+    }
+  }
+}

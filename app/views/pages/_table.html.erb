@@ -1,0 +1,11 @@
+<h2><%= page.title %></h2>
+<p><%= render_md(page.content[:comment]) %></p>
+<table>
+  <% page.content[:records].each do |i, row| %>
+    <tr>
+      <% row[:items].each do |item| %>
+        <td><%= render_md(item) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

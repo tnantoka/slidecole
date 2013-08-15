@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="<%= col(12) %>">
+    <%= form_for(Attachment.new, html: { class: 'dropzone' }) do |f| %>
+      <div class="fallback">
+        <%= f.file_field :file %>
+        <%= f.submit %>
+      </div>
+    <% end %>
+
+    <ul class="media-list attachment_list">
+      <% @attachments.each do |attachment| %>
+        <li class="media">
+          <%= link_to attachment_path(attachment), class: 'pull-left' do %>
+            <% if attachment.image? %>
+              <%= image_tag attachment_path(attachment), class: 'media-object img-thumbnail' %>
+            <% else %>
+              <%= image_tag 'blank.png', class: 'media-object img-thumbnail' %>
+            <% end %>
+          <% end %>
+          <div class="media-body">
+            <p class="text-muted"><small><%= time_ago(attachment.created_at) %></small><p>
+            <h4 class="media-heading">
+              <%= attachment.file.file.filename %>
+              <small><%= attachment_path(attachment) %></small>
+              <%= link_to attachment_path(attachment), method: :delete, data: { confirm: t(:sure) }, title: t(:delete), class: 'btn btn-danger btn-sm' do %><i class="icon-remove"></i><% end %>
+            </h4>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

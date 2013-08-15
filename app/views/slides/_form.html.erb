@@ -1,0 +1,100 @@
+<div class="js_slide">
+  <%= form_for((@slide.new_record? ? @slide : [current_user, @slide]), html: { class: 'js_slide_form' }) do |f| %>
+
+    <div class="row">
+      <div class="<%= col(12) %>">
+        <% if @slide.errors.any? %>
+          <div class="bs-callout bs-callout-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4><%= t('activerecord.errors.template.header', model: Slide.model_name.human, count: @slide.errors.count) %></h4>
+            <ul>
+            <% @slide.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <div class="input-group">
+            <%= f.text_field :title, class: 'form-control', placeholder: t('activerecord.attributes.slide.title'), required: true %>
+            <div class="input-group-btn">
+              <%= f.button class: 'btn btn-primary', title: t(:save) do %><i class="icon-ok"></i><% end %>
+              <%= link_to (@slide.new_record? ? current_user : [current_user, @slide]), class: 'btn btn-default js_cancel_btn', title: t(:cancel) do %><i class="icon-ban-circle"></i><% end %>
+              <%= link_to preview_slides_path, class: 'btn btn-default js_preview_btn', title: t(:preview) do %><i class="icon-play"></i><% end %>
+              <%= link_to '#', class: 'btn btn-default js_options_btn', title: t(:options) do %><i class="icon-wrench"></i><% end %>
+              <% if @slide.can_delete?  %>
+                <%= link_to [current_user, @slide], class: 'btn btn-danger js_delete_btn', title: t(:delete), method: :delete, data: { confirm: t(:sure) } do %><i class="icon-trash"></i><% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row options js_options">
+      <div class="<%= col(4) %>">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon input-sm"><%= user_path(current_user) %>/</span>
+            <%= f.text_field :slug, placeholder: t('activerecord.attributes.slide.slug'), class: 'form-control input-sm' %>
+          </div>
+        </div>
+      </div>
+      <div class="<%= col(2) %>">
+        <div class="form-group">
+          <%= f.collection_select(:lang_id, Lang.all, :id, :name, {}, class: 'form-control input-sm') %>
+        </div>
+      </div>
+      <div class="<%= col(4) %>">
+        <div class="form-group">
+          <%= f.collection_select(:category_id, Category.all, :id, :name, { include_blank: t(:uncategorized)}, class: 'form-control input-sm') %>
+        </div>
+      </div>
+      <div class="<%= col(2) %> text-right">
+        <div class="form-group">
+          <%= f.label :is_draft, class: 'checkbox-inline' do %>
+            <%= f.check_box :is_draft %><%= t('activerecord.attributes.slide.is_draft') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="js_page_list">
+    </div>
+
+    <div class="js_destroy_list">
+    </div>
+
+    <div class="hidden-sm page_nav js_page_nav" data-spy="affix">
+    </div>
+
+  <% end %>
+</div>
+
+<div class="modal fade" id="modal_image">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t(:images) %></h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(Attachment.new, html: { class: 'dropzone' }) do |f| %>
+          <div class="fallback">
+            <%= f.file_field :file %>
+            <%= f.submit %>
+          </div>
+        <% end %>
+        <ul class="list-inline image_list">
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t(:close) %></button>
+      </div>
+    </div>
+  </div>
+</div>
+

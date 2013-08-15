@@ -1,0 +1,4 @@
+<%= JST['templates/_title']({ model: model }) %>
+<p>
+  <textarea name="slide[pages_attributes][<%= model.get('order') %>][content][body]" class="form-control input-sm" placeholder="<%= I18n.t('placeholder.body') %>" data-content="body" rows="5"><%= model.get('content').body %></textarea>
+</p>

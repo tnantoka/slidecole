@@ -1,0 +1,84 @@
+<% content_for(:title) { "#{@slide.title} - #{@slide.user.username}" } %>
+
+<% content_for(:blog_content) do %>
+  <ul class="breadcrumb">
+    <li><%= link_to @user.username, @user %>
+    <% if @slide.category.present? %>
+      <li><%= link_to @slide.category.name, [@user, @slide.category] %>
+    <% else %>
+      <li><%= link_to t(:uncategorized), uncategorized_user_categories_path(@user) %>
+    <% end %>
+    <li class="active"><%= @slide.title %>
+  </ul>
+
+  <%= render 'shared/preview', slide: @slide, size: 'large' %>
+
+  <table class="table table-striped slide_info">
+    <tbody>
+      <tr>
+        <th><%= t('activerecord.models.user') %></th>
+        <td><%= link_to @slide.user.username, @slide.user %></td>
+      </tr>
+      <tr>
+        <th><%= t(:created_at) %></th>
+        <td><%= time_ago(@slide.created_at) %></td>
+      </tr>
+      <tr>
+        <th><%= t(:updated_at) %></th>
+        <td><%= time_ago(@slide.updated_at) %></td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.slide.lang_id') %></th>
+        <td>
+          <%= t("lang.#{@slide.lang.code}") %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.slide.category_id') %></th>
+        <td>
+          <% if @slide.category.present? %>
+            <%= link_to [@slide.user, @slide.category], @slide.category.name %>
+          <% else %>
+            <%= link_to t(:uncategorized), uncategorized_user_categories_path(@slide.user) %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= t(:impression) %></th>
+        <td><%= @slide.impressionist_count(filter: :ip_address) %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5><%= t(:embed) %></h5>
+  <pre><code><%= %!<iframe src="#{play_user_slide_url(@slide.user, @slide, iframe: 1)}"></iframe>! %></code></pre>
+
+  <div class="row">
+    <div class="<%= col(12) %>">
+      <h4 class="page-header"><%= t(:comments) %></h4>
+      <ul class="media-list comment_list js_comment_list">
+        <%= render @comments %>
+      </ul>
+      <ul class="media-list">
+        <% if user_signed_in? %>
+          <li class="media">
+            <%= link_to current_user, class: 'pull-left' do %> 
+              <%= image_tag current_user.avatar(size: 64), class: 'media-object img-circle' %>
+            <% end %>
+            <div class="media-body">
+              <%= form_for @comment, url: comments_user_slide_path(@slide.user, @slide), remote: true, data: { type: 'html' }, html: { class: 'js_comment_form' } do |f| %>
+                <div class="form-group">
+                  <%= f.text_area :comment, class: 'form-control js_comment', placeholder: t('activerecord.attributes.comment.comment'), required: true %>
+                </div>
+                <div class="form-group text-right">
+                  <%= f.submit class: 'btn btn-primary', data: { disable_with: t(:sending) } %>
+                </div>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+

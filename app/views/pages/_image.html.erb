@@ -1,0 +1,9 @@
+<h2><%= page.title %></h2>
+<p><%= render_md(page.content[:comment]) %></p>
+<p>
+  <% if Attachment.image?(page.content[:url]) %>
+    <%= image_tag(page.content[:url]) %>
+  <% else %>
+    <%= link_to File.basename(page.content[:url]), page.content[:url] %>
+  <% end %>
+</p>

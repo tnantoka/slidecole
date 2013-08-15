@@ -1,0 +1,15 @@
+<% content_for(:title) { @user.username } %>
+
+<% content_for(:blog_content) do %>
+  <ul class="breadcrumb">
+    <li class="active"><%= @user.username %>
+  </ul>
+
+  <%= render @slides %>
+
+  <div class="panel entry">
+    <% # entry_name is for not found %>
+    <%= page_entries_info(@slides, entry_name: Slide.model_name.human) %>
+    <%= paginate @slides, param_name: :p %>
+  </div>
+<% end %>

@@ -1,0 +1,180 @@
+en:
+  brand: Slidecole 
+  lead: Publish slides instead of blogging. 
+
+  sign_in: Sign in 
+  sign_up: Sign up
+  sign_out: Sign out
+  settings: Settings
+  resend: Resend
+  resend_confirmation: Resend confirmation instructions
+  forgot: Forgot your password?
+  send_reset: Send me reset password instructions
+  change: Change your password
+  new_password: New password
+  edit_user: Edit user
+  cancel_account: Cancel my account
+  unhappy: Unhappy?
+  back: Back
+  leave_blank: leave blank if you don't want to change it
+  need_password: (we need your current password to confirm your changes)
+  confirm: Confirm my account
+
+  save: Save
+  cancel: Cancel
+  delete: Delete
+  options: Options
+  add_page: Add page
+  preview: Preview
+  comments: Comments
+  sending: Sending…
+  search: Search
+  search_results: Search Results for "%{query}"
+  images: Images
+  close: Close
+
+  untitled: Untitled
+  uncategorized: Uncategorized
+
+  slides: Slides
+  categories: Categories
+
+  about: Introduction
+
+  full: Full
+  download: Download
+  edit: Edit
+  theme: Theme
+  transition: Transition
+  none: None
+  plain: Plain
+
+  created_at: Created at
+  updated_at: Updated at
+  ago: ago
+  impression: Impression
+  embed: Embed
+
+  sure: Are you sure?
+
+  popular_slides: Popular slides
+  newer_slides: New slides
+  popular_users: Popular users 
+  newer_users: New users 
+
+  blog_view: Blog view
+  normal_view: Normal view
+  recent_comments: Recent comments
+  comment_on: "%{user} on %{slide}"
+
+  activerecord:
+    models:
+      slide: Slide
+      page: Page
+      category: Category
+      user: User
+      attachment: Image
+      
+    attributes:
+      user:
+        email: E-mail
+        password: Password
+        password_confirmation: Password confirmation
+        username:  Username
+        lang_id: Language
+        login: E-mail or Username
+        current_password: Current password
+        remember_me: Remember me
+      slide:
+        title: Title
+        slug: Slug
+        is_draft: Draft
+        category_id: Category
+        lang_id: Language
+      category:
+        name: Name
+        slug: Slug
+      comment:
+        comment: Comment
+
+  title:
+    welcome:
+      search: Search
+    registrations:
+      edit: Settings
+      update: Settings
+      new: Sign up
+      create: Sign up
+    confirmations:
+      new: Resend confirmation instructions
+      create: Resend confirmation instructions
+    passwords:
+      new: Forgot your password?
+      create: Forgot your password?
+      edit: Change your password
+      update: Change your password
+    sessions:
+      new: Sign in
+    users:
+      show: Profile
+    slides:
+      index: Slide
+      new: New slide
+      create: New slide
+      edit: Edit slide
+      update: Edit slide
+      show: ''
+      plain: Plain
+    categories:
+      show: Category
+      uncategorized: Category
+      index: Categories
+      create: New category
+      edit: Edit category
+      update: Edit category
+    attachments:
+      index: Images
+
+ 
+  lang:
+    en: English
+    ja: Japanese
+
+  enumerize:
+    page:
+      kind:
+        cover: Cover
+        text: Text
+        user: User
+        code: Code
+        quote: Quote
+        list: List
+        table: Table
+        free: Free
+        image: Image
+
+  placeholder: 
+    title: Title
+    copyright: Copyright
+    url: URL
+    body: Body
+    source: Source
+    comment: Comment
+    text: Text
+    cite: Cite
+    item: ''
+    cell: '' 
+    rows: Rows
+    cols: Cols
+
+  flash:
+    models:
+      update: "%{model} was successfully updated."
+      create: "%{model} was successfully created."
+      destroy: "%{model} was successfully deleted."
+
+  devise:
+    links:
+      forgot: "Forgot your password?"
+      confirm: "Didn't receive confirmation instructions?"
+ 

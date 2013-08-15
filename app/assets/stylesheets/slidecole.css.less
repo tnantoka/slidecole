@@ -1,0 +1,209 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Less here: http://lesscss.org/
+
+@import "bootstrap/less/mixins";
+@import "bootstrap/less/variables";
+
+// http://codepen.io/janreimers/pen/khEsA
+@turquoise: #1abc9c;
+@emerland: #2ecc71;
+@peterriver: #3498db;
+@amethyst: #9b59b6;
+@wetasphalt: #34495e;
+@greensea: #16a085;
+@nephritis: #27ae60;
+@belizehole: #2980b9;
+@wisteria: #8e44ad;
+@midnightblue: #2c3e50;
+@sunflower: #f1c40f;
+@carrot: #e67e22;
+@alizarin: #e74c3c;
+@clouds: #ecf0f1;
+@concrete: #95a5a6;
+@orange: #f39c12;
+@pumpkin: #d35400;
+@pomegranate: #c0392b;
+@silver: #bdc3c7;
+@asbestos: #7f8c8d;
+
+@bg: #fcfcfc;
+
+body#sc {
+
+  /* Bootstrap */
+  // font
+  h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+  }
+
+  // navbar
+  .sc-navbar {
+    background-color: @bg; 
+    i {
+      font-size: 18px;
+    }
+    a {
+      color: @peterriver;
+    }
+    a:hover {
+      color: @belizehole;
+    }
+    .active > a,
+    .active > a:hover {
+      background-color: inherit;
+    }
+    .navbar-toggle {
+      border-color: @peterriver;
+      .icon-bar {
+        background-color: @belizehole;
+      }
+    }
+    .navbar-toggle:hover {
+      background-color: @peterriver;
+      border-color: @peterriver;
+    }
+    .nav > li > a {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .sc-navbar {
+      border: none;
+    }
+  }
+
+  // input groups
+  .input-group-btn > .btn + .btn {
+    margin-left: -6px;
+  }
+
+  // hr
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  // page-header
+  .sc-header {
+    margin-top: 0;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  /* Global */
+
+  // body
+  padding-top: 0;
+  background: @bg;
+
+  // reset
+  a,
+  input {
+    outline: none;
+  }
+
+  // font
+  // http://stack3.com/web-design/css_font_family_body.html 
+  font-family: 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif; 
+
+  .logo {
+    width: 20px;
+    vertical-align: top;
+  }
+
+  // iframe for previwe
+  .preview_frame {
+    width: 100%;
+    min-height: 320px;
+    border: none;
+
+    // .panel
+    background-color: @panel-bg;
+    border: 1px solid @panel-border;
+    border-radius: @panel-border-radius;
+    .box-shadow(0 1px 1px rgba(0,0,0,.05));
+  }
+  @media screen and (min-width: 768px) {
+    .preview_small {
+      //min-height: 175px;
+    }
+    .preview_large {
+      //min-height: 355px;
+      min-height: 420px;
+    }
+  }
+
+  // footer
+  footer {
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .search_form {
+      border: none;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .search_form {
+      width: 300px; 
+      margin-top: 10px;
+    }
+  }
+
+  // blog
+  .blog {
+    .entry {
+      border: none;
+      background: none;
+      .box-shadow(none);
+      padding-top: 0;
+
+      .preview_blog {
+        min-height: 350px;
+      }
+      .page-header {
+        margin-top: 10px;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+    .ad {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .search_form {
+      margin-top: 0;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+
+  // without top navbar 
+  /*
+  &.guest {
+    &.users.show,
+    &.slides.show,
+    &.categories.show,
+    &.categories.uncategorized,
+    {
+      .navbar_top {
+        display: none;
+      }
+    }
+  } 
+
+  // with top navbar
+  &.member {
+    .sc-header {
+      margin-top: 10px;
+    }
+  }
+  */
+}
+

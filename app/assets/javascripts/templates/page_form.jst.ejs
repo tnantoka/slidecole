@@ -1,0 +1,78 @@
+<div class="row" id="page_<%= model.get('order') + 1 %>">
+  <div class="col-sm-12">
+    <div class="panel sc-panel">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4>
+              <a href="#" class="js_toggle"><i class="icon-caret-up"></i></a>
+              <%= I18n.t('activerecord.models.page') %>
+              <%= model.get('order') + 1 %>
+              <small><%= I18n.t('enumerize.page.kind.' + model.get('kind')) %></small>
+            </h4>
+          </div>
+          <div class="col-sm-6">
+            <div class="btn-toolbar pull-right">
+              <div class="btn-group">
+                <a href="#" class="btn btn-link btn-sm js_first"><i class="icon-double-angle-up"></i></a>
+                <a href="#" class="btn btn-link btn-sm js_up"><i class="icon-angle-up"></i></a>
+                <a href="#" class="btn btn-link btn-sm js_down"><i class="icon-angle-down"></i></a>
+                <a href="#" class="btn btn-link btn-sm js_last"><i class="icon-double-angle-down"></i></a>
+              </div>
+              <div class="btn-group">
+                <a href="#" class="btn btn-link btn-sm js_duplicate"><i class="icon-copy"></i></a>
+              </div>
+              <div class="btn-group">
+                <a href="#" class="btn btn-link btn-sm js_delete"><i class="icon-remove"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body js_body">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="js_edit">
+              <input type="hidden" name="slide[pages_attributes][<%= model.get('order') %>][id]" value="<%= model.get('id') %>">
+              <input type="hidden" name="slide[pages_attributes][<%= model.get('order') %>][kind]" value="<%= model.get('kind') %>">
+              <input type="hidden" name="slide[pages_attributes][<%= model.get('order') %>][order]" value="<%= model.get('order') %>">
+              <%= JST['templates/_' + model.get('kind')]({ model: model }) %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="preview js_preview">
+              <iframe src="/slides/blank?iframe=1" class="js_preview_frame preview_frame"></iframe>
+            </div>
+          </div>
+        </div>
+        <!--div class="panel-footer">
+        </div-->
+      </div>
+    </div>
+    <div class="insert js_insert clearfix">
+      <a href="#" class="btn btn-default insert_btn js_insert_btn"><i class="icon-plus"></i></a>
+      <hr>
+      <nav class="navbar js_navbar">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse-insert">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"><%= I18n.t('add_page') %></a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse-insert">
+          <ul class="nav navbar-nav">
+            <% _.each(gon.kinds, function(kind) { %>
+              <li><a href="#" class="js_kind" data-kind="<%= kind %>"><%= I18n.t('enumerize.page.kind.' + kind) %></a>
+            <% }) %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" class="js_close"><i class="icon-remove"></i></a>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

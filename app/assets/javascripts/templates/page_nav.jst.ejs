@@ -1,0 +1,5 @@
+<ul class="nav nav-stacked nav-pills">
+  <% collection.each(function(model) { %>
+    <li class="<%= model.get('order') == 0 ? 'active' : '' %>"><a href="#page_<%= model.get('order') + 1 %>"><%= model.get('order') + 1 %></a>
+  <% }) %>
+</ul>

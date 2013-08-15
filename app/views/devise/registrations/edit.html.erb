@@ -1,0 +1,51 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+
+  <fieldset>
+    <legend><%= t(:edit_user) %></legend>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control', autofocus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %> <i>(<%= t(:leave_blank) %></i>)
+        <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :lang_id %>
+        <%= f.collection_select(:lang_id, Lang.all, :id, :name, { selected: Lang.find_by_code(I18n.locale).id }, class: 'form-control') %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password %> <i><%= t(:need_password) %></i>
+        <%= f.password_field :current_password, class: 'form-control' %>
+      </div>
+
+      <%= f.submit class: 'btn btn-default', data: { disable_with: t(:sending) } %>
+  </fieldset>
+<% end %>
+
+<h4 class="page-header"><%= t(:cancel_account) %></h4>
+<p><%= t(:unhappy) %> <%= button_to t(:cancel_account), registration_path(resource_name), :data => { :confirm => t(:sure) }, :method => :delete, class: 'btn btn-danger' %></p>
+
+<%#= link_to "Back", :back %>
+

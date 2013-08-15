@@ -1,0 +1,28 @@
+<div class="panel">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t(:categories) %> (<%= @categories.count + 1 %>)</h3>
+  </div>
+  <div class="panel-body">
+    <div class="input-group">
+      <span class="input-group-addon input-sm"><i class="icon-search"></i></span>
+      <input type="search" class="form-control input-sm js_filter">
+    </div>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <span class="badge"><%= current_user.slides.uncategorized.count %></span>
+      <%= link_to t(:uncategorized), uncategorized_user_categories_path(current_user) %>
+    </li>
+    <% @categories.each do |category| %>
+      <li class="list-group-item <%= 'active_item' if category == @category %>">
+        <span class="badge"><%= category.slides.count %></span>
+        <%= link_to category.name, [current_user, category] %>
+        <div class="btn-group">
+          <%= link_to edit_category_path(category), title: t(:edit), class: 'btn btn-default btn-sm' do %><i class="icon-pencil"></i><% end %>
+          <%= link_to [@user, category], title: t(:delete), method: :delete, data: { confirm: t(:sure) }, class: 'btn btn-danger btn-sm' do %><i class="icon-trash"></i><% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

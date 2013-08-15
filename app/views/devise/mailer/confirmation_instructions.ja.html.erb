@@ -1,0 +1,5 @@
+<p>Welcome <%= @email %>!</p>
+
+<p>以下のリンクからメールアドレスを確認してください。</p>
+
+<p><%= link_to t(:confirm), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>

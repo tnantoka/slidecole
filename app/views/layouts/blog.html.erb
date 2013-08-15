@@ -1,0 +1,137 @@
+<% content_for :content do %>
+  <div class="blog">
+    <div class="row">
+      <div class="<%= col(12) %>">
+        <div class="page-header sc-header">
+          <div class="row">
+            <div class="<%= col(9) %>">
+              <h1>
+                <%= link_to [@user, @user.about] do %> 
+                  <%= image_tag @user.avatar(size: 60), class: 'img-circle' %>
+                <% end %>
+                <%= content_for(:title) %>
+              </h1>
+            </div>
+            <div class="<%= col(3) %> text-right">
+              <div class="fb-like" data-href="<%= request.original_url %>" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false" data-font="arial"></div>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= request.original_url %>" data-lang="en" data-count="vertical">Tweet</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="<%= col(8) %>">
+        <%= content_for?(:blog_content) ? yield(:blog_content) : yield %>
+      </div>
+
+      <div class="<%= col(4) %>">
+        <% if Rails.env.production? %>
+          <div class="ad">
+            <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-7033544542206385";
+            /* Slidecole blog side top */
+            google_ad_slot = "7306725257";
+            google_ad_width = 234;
+            google_ad_height = 60;
+            //-->
+            </script>
+            <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+            </script>
+          </div>
+        <% end %>
+
+        <div>
+          <%= form_tag search_path(u: @user.username), method: :get, class: 'search_form' do %>
+            <div class="input-group">
+              <span class="input-group-addon input-sm"><%= @user.username %></span>
+              <%= text_field_tag :q, params[:q], class: 'form-control input-sm', placeholder: t(:search) %>
+              <span class="input-group-btn">
+                <%= button_tag t(:search), type: :submit, class: 'btn btn-default btn-sm' %>
+              </span>
+            </div>
+            <%= hidden_field_tag :u, @user.username %>
+          <% end %>
+        </div>
+
+        <div class="panel sc-panel-list">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= t(:newer_slides) %>
+              <%= link_to user_path(@user, format: :atom) do %><i class="icon-rss-sign"></i><% end %>
+            </h3>
+          </div>
+          <div class="list-group">
+            <%= render 'shared/slides', slides: @newer_slides %>
+          </div>
+        </div>
+
+        <div class="panel sc-panel-list">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= t(:categories) %></h3>
+          </div>
+          <div class="list-group">
+            <%= link_to uncategorized_user_categories_path(@user), class: 'list-group-item' do %>
+              <span class="badge"><%= @user.slides.uncategorized.count %></span>
+              <%= t(:uncategorized) %>
+            <% end %>
+            <% @categories.each do |category| %>
+              <%= link_to [@user, category], class: 'list-group-item' do %>
+                <span class="badge"><%= can_edit?(category) ? category.slides.count : category.slides.published.count %></span>
+                <%= category.name %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="panel sc-panel-list">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= t(:recent_comments) %></h3>
+          </div>
+          <div class="list-group">
+            <% @recent_comments.each do |comment| %>
+              <%= link_to [comment.commentable.user, comment.commentable], class: 'list-group-item' do %>
+                <h5 class="list-group-item-heading"><%= t(:comment_on, slide: comment.commentable.title, user: comment.user.username) %></h5>
+                <p class="list-group-item-text">
+                  <small>
+                    <%= time_ago(comment.created_at) %>
+                  </small>
+                </p>
+              <% end %>
+
+            <% end %>
+          </div>
+        </div>
+
+        <div class="panel sc-panel-list">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= t(:popular_slides) %></h3>
+          </div>
+          <div class="list-group">
+            <%= render 'shared/slides', slides: @popular_slides %>
+          </div>
+        </div>
+
+        <% if Rails.env.production? %>
+          <div class="ad">
+            <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-7033544542206385";
+            /* Slidecole blog side bottom */
+            google_ad_slot = "8783458451";
+            google_ad_width = 200;
+            google_ad_height = 200;
+            //-->
+            </script>
+            <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+            </script>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render template: "layouts/application" %>

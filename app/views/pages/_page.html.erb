@@ -1,0 +1,4 @@
+<section class="slide" id="page_<%= page.new_record? ? SecureRandom.hex : page.id %>">
+  <%= render "pages/#{page.kind}", page: page %>
+</section>
+

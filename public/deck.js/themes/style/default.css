@@ -1,0 +1,20 @@
+body.play {
+  background: #fcfcfc;
+}
+
+a {
+  outline: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #3498db; /* peterriver */
+}
+
+.slide h2 {
+  border: none;
+}
+
+.deck-prev-link, .deck-next-link {
+  font-family: serif;
+}
+

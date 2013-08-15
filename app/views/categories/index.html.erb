@@ -1,0 +1,19 @@
+<%= render 'errors' %>
+
+<div class="row">
+  <div class="<%= col(6) %>">
+    <%= render 'list' %>
+  </div>
+  <div class="<%= col(6) %>">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('title.categories.create') %></h3>
+      </div>
+      <div class="panel-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

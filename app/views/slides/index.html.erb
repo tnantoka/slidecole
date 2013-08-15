@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="<%= col(12) %>">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t(:slides) %> (<%= @slides.count %>)</h3>
+      </div>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon input-sm"><i class="icon-search"></i></span>
+          <input type="search" class="form-control input-sm js_filter">
+        </div>
+      </div>
+      <ul class="list-group">
+        <% @slides.each do |slide| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="<%= col(10) %>">
+                <%= link_to slide.title, [slide.user, slide] %>
+                <%= slide.category.present? ? slide.category.name : t(:uncategorized) %>
+                <small>
+                  <%= time_ago(slide.created_at) %>
+                  <i class="icon-eye-open"></i> <%= slide.impressions_count %>
+                  <i class="icon-comment"></i> <%= slide.comments.size %> 
+                </small>
+              </div>
+              <div class="<%= col(2) %> text-right">
+                <% if slide.is_draft? %>
+                  <span class="label label-default"><%= t('activerecord.attributes.slide.is_draft') %></span>
+                <% end %>
+                <div class="btn-group">
+                  <%= link_to edit_user_slide_path(current_user, slide), title: t(:edit), class: 'btn btn-default btn-sm' do %><i class="icon-pencil"></i><% end %>
+                  <% if slide.can_delete?  %>
+                    <%= link_to [current_user, slide], title: t(:delete), method: :delete, data: { confirm: t(:sure) }, class: 'btn btn-danger btn-sm' do %><i class="icon-trash"></i><% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

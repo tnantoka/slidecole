@@ -1,0 +1,5 @@
+<%= JST['templates/_title']({ model: model }) %>
+<p>
+  <input type="text" name="slide[pages_attributes][<%= model.get('order') %>][content][copyright]" class="form-control input-sm" value="<%= model.get('content').copyright %>" placeholder="<%= I18n.t('placeholder.copyright') %>" data-content="copyright">
+</p>
+

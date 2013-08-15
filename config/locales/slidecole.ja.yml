@@ -1,0 +1,183 @@
+ja:
+  brand: Slidecole 
+  lead: ブログ感覚でスライドを。 
+
+  sign_in: ログイン
+  sign_up: ユーザ登録
+  sign_out: ログアウト
+  settings: 設定
+  resend: 再送信
+  resend_confirmation: 登録確認メールを再送信
+  forgot: パスワードを忘れた
+  send_reset: パスワード変更メール送信
+  change: パスワード変更
+  new_password: 新しいパスワード
+  edit_user: ユーザ編集
+  cancel_account: アカウント削除
+  unhappy: お気に召しませんでしたか？
+  back: 戻る
+  leave_blank: パスワードを変更しない場合は空白
+  need_password: ""
+  confirm: 確認
+
+  save: 保存
+  cancel: キャンセル
+  delete: 削除
+  options: オプション
+  add_page: ページを追加
+  preview: プレビュー
+  comments: コメント
+  sending: 送信中…
+  search: 検索
+  search_results: '"%{query}"の検索結果'
+  images: 画像
+  close: 閉じる
+
+  untitled: タイトル未定
+  uncategorized: 未分類
+
+  slides: スライド
+  categories: カテゴリ
+
+  about: 自己紹介
+
+  full: フル表示 
+  download: ダウンロード
+  edit: 編集
+  theme: テーマ
+  transition: トランジション
+  none: なし
+  plain: テキスト
+
+  created_at: 作成日時
+  updated_at: 更新日時
+  ago: 前
+  impression: 表示回数
+  embed: 埋め込みタグ
+
+  sure: 本当によろしいですか？
+
+  popular_slides: 人気のスライド
+  newer_slides: 最新のスライド
+  popular_users: 人気のユーザ
+  newer_users: 新しいユーザ
+
+  blog_view: ブログ表示
+  normal_view: 通常表示
+  recent_comments: 最近のコメント
+  comment_on: "%{slide}に%{user}さんから"
+
+  activerecord:
+    models:
+      slide: スライド
+      page: ページ
+      category: カテゴリ
+      user: ユーザ
+      attachment: 画像
+
+    attributes:
+      user:
+        email:  メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        username:  ユーザ名
+        lang_id: 言語
+        login: メールアドレス / ユーザ名
+        current_password: 現在のパスワード
+        remember_me: ログイン状態を記憶
+      slide:
+        title: タイトル
+        slug: スラッグ
+        is_draft: 下書き
+        category_id: カテゴリ
+        lang_id: 言語
+      category:
+        name: カテゴリ名
+        slug: スラッグ
+      comment:
+        comment: コメント
+
+
+  title:
+    welcome:
+      search: 検索
+    registrations:
+      edit: 設定
+      update: 設定
+      new: ユーザ登録
+      create: ユーザ登録
+    confirmations:
+      new: 再送信
+      create: 再送信
+    passwords:
+      new: パスワードを忘れた 
+      create: パスワードを忘れた 
+      edit: パスワードリセット
+      update: パスワードリセット
+    sessions:
+      new: ログイン
+    users:
+      show: プロフィール
+    slides:
+      index: スライド
+      new: スライド作成
+      create: スライド作成
+      edit: スライド編集
+      update: スライド編集
+      show: ''
+      plain: テキスト
+    categories:
+      show: カテゴリ
+      uncategorized: カテゴリ
+      index: カテゴリ
+      create: カテゴリ作成
+      edit: カテゴリ編集
+      update: カテゴリ編集
+    blog:
+      index: ''
+      search: 検索
+    attachments:
+      index: 画像
+
+  lang:
+    en: 英語
+    ja: 日本語 
+
+  enumerize:
+    page:
+      kind:
+        cover: 表紙
+        text: テキスト
+        user: ユーザ
+        code: コード
+        quote: 引用
+        list: リスト
+        table: 表
+        free: フリー
+        image: 画像
+
+  placeholder: 
+    title: タイトル
+    copyright: コピーライト 
+    url: URL
+    body: 本文
+    source: ソース
+    comment: コメント
+    text: テキスト
+    cite: 出典
+    item: ''
+    cell: ''
+    rows: 行
+    cols: 列
+
+  flash:
+    models:
+      update: "%{model}は正常に更新されました。"
+      create: "%{model}は正常に作成されました。"
+      destroy: "%{model}は正常に削除されました。"
+
+  devise:
+    links:
+      forgot: "パスワードを忘れた"
+      confirm: "登録確認メールが届かない"
+ 

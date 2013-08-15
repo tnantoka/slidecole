@@ -1,0 +1,27 @@
+<%= JST['templates/_title']({ model: model }) %>
+<p>
+  <textarea name="slide[pages_attributes][<%= model.get('order') %>][content][comment]" class="form-control input-sm" placeholder="<%= I18n.t('placeholder.comment') %>" data-content="comment" rows="2"><%= model.get('content').comment %></textarea>
+</p>
+<div class="row">
+  <div class="col-sm-5">
+    <input type="text" name="slide[pages_attributes][<%= model.get('order') %>][content][rows]" class="form-control input-sm js_rows" value="<%= model.get('content').rows %>" placeholder="<%= I18n.t('placeholder.rows') %>" data-content="rows">
+  </div>
+  <div class="col-sm-5">
+    <input type="text" name="slide[pages_attributes][<%= model.get('order') %>][content][cols]" class="form-control input-sm js_cols" value="<%= model.get('content').cols %>" placeholder="<%= I18n.t('placeholder.cols') %>" data-content="cols">
+  </div>
+  <div class="col-sm-2 text-right">
+    <a href="#" class="btn btn-default btn-sm js_table_refresh"><i class="icon-refresh"></i></a>
+  </div>
+</div>
+<table class="table table-bordered records">
+  <% _.each(model.get('content').records, function(row, i) { %>
+    <tr>
+      <% _.each(row.items, function(cell, j) { %>
+      <td>
+        <input type="text" name="slide[pages_attributes][<%= model.get('order') %>][content][records][<%= i %>][items][]" class="form-control input-sm" value="<%= cell %>" placeholder="<%= I18n.t('placeholder.item') %>" data-content="records" data-row-index="<%= i %>" data-cell-index="<%= j %>">
+        <% console.log(cell) %>
+      </td>
+      <% }) %>
+    </tr>
+  <% }) %>
+</table>

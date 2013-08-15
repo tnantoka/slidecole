@@ -1,0 +1,12 @@
+[submodule "vendor/assets/stylesheets/bootstrap"]
+	path = vendor/assets/stylesheets/bootstrap
+	url = git://github.com/twbs/bootstrap.git
+[submodule "vendor/assets/stylesheets/fontawesome"]
+	path = vendor/assets/stylesheets/fontawesome
+	url = git://github.com/FortAwesome/Font-Awesome.git
+[submodule "vendor/assets/javascripts/sisyphus"]
+	path = vendor/assets/javascripts/sisyphus
+	url = git://github.com/simsalabim/sisyphus.git
+[submodule "vendor/assets/javascripts/dropzone"]
+	path = vendor/assets/javascripts/dropzone
+	url = git://github.com/enyo/dropzone.git

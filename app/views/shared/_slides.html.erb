@@ -1,0 +1,12 @@
+<% slides.each do |slide| %>
+  <%= link_to [slide.user, slide], class: 'list-group-item' do %>
+    <h5 class="list-group-item-heading"><%= slide.title %></h5>
+    <p class="list-group-item-text">
+      <small>
+        <%= time_ago(slide.created_at) %>
+        <i class="icon-eye-open"></i> <%= slide.impressions_count %>
+        <i class="icon-comment"></i> <%= slide.comments.size %> 
+      </small>
+    </p>
+  <% end %>
+<% end %>

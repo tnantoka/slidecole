@@ -1,0 +1,65 @@
+<div class="row catch">
+  <div class="<%= col(12) %>">
+    <%= render 'shared/preview', slide: @about, frame_only: true, size: 'large' %>
+    <p class="text-right">
+      <%= link_to play_user_slide_path(@about.user, @about), class: 'btn btn-link' do %><i class="icon-resize-full"></i> <%= t(:full) %><% end %>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="<%= col(4) %>">
+    <div class="panel sc-panel-list">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t(:popular_slides) %></h3>
+      </div>
+      <div class="list-group">
+        <%= render 'shared/slides', slides: @popular_slides %>
+      </div>
+    </div>
+  </div>
+
+  <div class="<%= col(4) %>">
+    <div class="panel sc-panel-list">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t(:newer_slides) %></h3>
+      </div>
+      <div class="list-group">
+        <%= render 'shared/slides', slides: @newer_slides %>
+      </div>
+    </div>
+  </div>
+
+  <div class="<%= col(4) %>">
+    <div class="panel sc-panel-list">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t(:popular_users) %></h3>
+      </div>
+      <div class="list-group">
+        <% @popular_users.each do |user| %>
+          <%= link_to [user], class: 'list-group-item' do %>
+            <span class="badge"><%= user.slides_count.to_i %></span>
+            <%= image_tag user.avatar, class: 'img-circle' %>
+            <%= user.username %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel sc-panel-list">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t(:newer_users) %></h3>
+      </div>
+      <div class="list-group">
+        <% @newer_users.each do |user| %>
+          <%= link_to [user], class: 'list-group-item' do %>
+            <%= image_tag user.avatar, class: 'img-circle' %>
+            <%= user.username %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

@@ -1,0 +1,23 @@
+<%= form_for(@category, html: { class: 'form-horizontal' }) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, class: "#{col(3)} control-label input-sm" %>
+    <div class="<%= col(9) %>">
+      <%= f.text_field :name, class: 'form-control input-sm', required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :slug, class: "#{col(3)} control-label input-sm" %>
+    <div class="<%= col(9) %>">
+      <div class="input-group">
+        <span class="input-group-addon input-sm"><%= user_categories_path(current_user) %>/</span>
+        <%= f.text_field :slug, placeholder: t('activerecord.attributes.category.slug'), class: 'form-control input-sm' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="<%= col(9) %> <%= offset(3) %>">
+      <%= f.submit class: 'btn btn-primary btn-sm', data: { disable_with: t(:sending) } %>
+    </div>
+  </div>
+<% end %>
+
