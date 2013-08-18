@@ -16,19 +16,19 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404(exception = nil)
-    if exception
-      logger.info "Rendering 404 with exception: #{exception.message}"
-    end
-
-    render template: 'errors/error_404', status: 404, layout: 'errors', content_type: 'text/html'
+    render_error(404, exception)
   end
 
   def render_500(exception = nil)
+    render_error(500, exception)
+  end
+
+  def render_error(status, exception = nil)
     if exception
-      logger.info "Rendering 500 with exception: #{exception.message}"
+      logger.info "Rendering #{status} with exception: #{exception.message}"
     end
 
-    render template: 'errors/error_500', status: 500, layout: 'errors', content_type: 'text/html'
+    render template: "errors/error_#{status}", status: status, layout: 'errors', content_type: 'text/html'
   end
 
   def set_locale

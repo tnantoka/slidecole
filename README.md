@@ -3,6 +3,11 @@
 Publish slides instead of blogging. 
 <https://slidecole.com/>
 
+[![Build Status](https://travis-ci.org/tnantoka/slidecole.png)](https://travis-ci.org/tnantoka/slidecole)
+[![Code Climate](https://codeclimate.com/github/tnantoka/slidecole.png)](https://codeclimate.com/github/tnantoka/slidecole)
+[![Dependency Status](https://gemnasium.com/tnantoka/slidecole.png)](https://gemnasium.com/tnantoka/slidecole)
+[![Coverage Status](https://coveralls.io/repos/tnantoka/slidecole/badge.png)](https://coveralls.io/r/tnantoka/slidecole)
+
 ## Installation
 
 
@@ -28,7 +33,7 @@ $ vim db/seeds.rb
 
 # Run
 $ rake assets:precompile
-$ touch tmp/restart.txt
+$ rails s
 ```
 
 ## Update fonts

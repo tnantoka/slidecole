@@ -55,15 +55,16 @@ group :test do
   gem 'simplecov', '~> 0.7.1', require: false
   gem 'launchy', '~> 2.3.0'
   gem 'database_cleaner', '~> 1.1.1'
+  gem 'coveralls', require: false
 end
 
-gem 'devise', '~> 3.0.2'
+gem 'devise', '~> 3.0.3'
 gem 'ejs', '~> 1.1.1'
 gem 'gon', '~> 4.1.1'
 gem 'default_value_for', github: 'tsmango/default_value_for', ref: '52f1c40f0a'
 gem 'enumerize', '~> 0.6.1'
 gem 'i18n-js', github: 'torandi/i18n-js', branch: 'rails4', ref: '37e908621c'
-gem 'impressionist', '~> 1.4.5'
+gem 'impressionist', '~> 1.4.6'
 gem 'acts_as_commentable', '~> 4.0.0'
 gem 'kaminari', '~> 0.14.1'
 gem 'redcarpet', '~> 3.0.0'
