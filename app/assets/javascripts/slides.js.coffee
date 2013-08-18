@@ -54,13 +54,13 @@ $(->
     Backbone.history.start()
 
     # autosave
-    sisyphus = $('.js_slide_form').sisyphus(
-      locationBased: true
-      timeout: 10
-    )
-    $('.js_cancel_btn').on('click', ->
-      sisyphus.manuallyReleaseData()
-    )
+    #sisyphus = $('.js_slide_form').sisyphus(
+    #  locationBased: true
+    #  timeout: 10
+    #)
+    #$('.js_cancel_btn').on('click', ->
+    #  sisyphus.manuallyReleaseData()
+    #)
 
   if $('body.slides.play').length ||
      $('body.slides.blank').length ||

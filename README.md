@@ -33,7 +33,7 @@ $ vim db/seeds.rb
 
 # Run
 $ rake assets:precompile
-$ rails s
+$ rails s -e production
 ```
 
 ## Update fonts

@@ -126,6 +126,7 @@ window.PageFormView = Backbone.View.extend(
     e.preventDefault()
     this.move(0) if this.model.get('order') > 0
   onClickDown: (e) ->
+    e.preventDefault()
     this.move(this.model.get('order') + 1) if this.model.get('order') < this.model.collection.length - 1
   onClickLast: (e) ->
     e.preventDefault()

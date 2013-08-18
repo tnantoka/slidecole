@@ -9,11 +9,17 @@ window.PageList = Backbone.Collection.extend(
       instance = this
       Backbone.Collection.apply(instance, arguments)
     return instance
-  add: (models, [options]) ->
+  add: (models, options) ->
     Backbone.Collection.prototype.add.apply(this, arguments)
     this.each((model, i) ->
       model.set('order', i)
     )
     this.trigger('added')
+  remove: (models, options) ->
+    Backbone.Collection.prototype.remove.apply(this, arguments)
+    this.each((model, i) ->
+      model.set('order', i)
+    )
+    this.trigger('removed')
 )
 

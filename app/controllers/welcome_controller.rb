@@ -3,7 +3,8 @@ class WelcomeController < ApplicationController
   skip_before_action :authenticate_user! 
 
   def index
-    @about = User.slidecole.about
+    @about = User.slidecole.slides.find_by(slug: 'about_ja') if I18n.locale == :ja
+    @about ||= User.slidecole.about
     @popular_slides = Slide.published.popular.limit(6)
     @newer_slides = Slide.published.newer.limit(6)
     @popular_users = User.popular.limit(3)
