@@ -78,13 +78,16 @@
       <footer class="js_footer">
         <p class="text-center"><small>&copy; 2013 <%= link_to t(:brand), :root %></a></small></p>
         <div class="row">
-          <div class="<%= col(6) %> <%= offset(3) %>">
+          <div class="<%= col(6) %> <%= offset(2) %>">
             <div class="row">
               <div class="<%= col(3) %> <%= offset(3) %>">
                 <div class="fb-like" data-href="<%= root_url %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
               </div>
               <div class="<%= col(3) %>">
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= root_url %>" data-lang="en">Tweet</a>
+              </div>
+              <div class="<%= col(3) %>">
+                <iframe src="http://ghbtns.com/github-btn.html?user=tnantoka&repo=slidecole&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
               </div>
             </div>
           </div>
