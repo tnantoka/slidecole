@@ -31,18 +31,18 @@
 <% if params[:iframe].blank? %>
 <div class="btns js_btns active">
   <div class="row">
-    <% unless @slide.new_record? %>
     <div class="<%= col(6) %> share">
-      <div class="row">
-        <div class="<%= col(3) %> text-right">
-          <div class="fb-like" data-href="<%= user_slide_url(@slide.user, @slide) %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
+      <% unless @slide.new_record? %>
+        <div class="row">
+          <div class="<%= col(3) %> text-right">
+            <div class="fb-like" data-href="<%= user_slide_url(@slide.user, @slide) %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
+          </div>
+          <div class="<%= col(3) %> ">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= user_slide_url(@slide.user, @slide) %>" data-lang="en">Tweet</a>
+          </div>
         </div>
-        <div class="<%= col(3) %> ">
-          <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= user_slide_url(@slide.user, @slide) %>" data-lang="en">Tweet</a>
-        </div>
-      </div>
+      <% end %>
     </div>
-    <% end %>
     <div class="<%= col(6) %> text-right">
       <div class="btn-group">
         <div class="btn-group">
