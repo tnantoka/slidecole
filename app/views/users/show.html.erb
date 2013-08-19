@@ -7,7 +7,7 @@
 
   <%= render @slides %>
 
-  <div class="panel entry">
+  <div class="panel panel-default entry">
     <% # entry_name is for not found %>
     <%= page_entries_info(@slides, entry_name: Slide.model_name.human) %>
     <%= paginate @slides, param_name: :p %>
