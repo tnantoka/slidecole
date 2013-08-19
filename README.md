@@ -1,6 +1,6 @@
 # Slidecole
 
-Publish slides instead of blogging. 
+Publish slides instead of blogging. Powered by Rails 4. 
 <https://slidecole.com/>
 
 [![Build Status](https://travis-ci.org/tnantoka/slidecole.png)](https://travis-ci.org/tnantoka/slidecole)
