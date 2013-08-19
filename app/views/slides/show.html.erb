@@ -51,7 +51,7 @@
   </table>
 
   <h5><%= t(:embed) %></h5>
-  <pre><code><%= %!<iframe src="#{play_user_slide_url(@slide.user, @slide, iframe: 1)}"></iframe>! %></code></pre>
+  <pre><code><%= %!<iframe src="#{play_user_slide_url(@slide.user, @slide, iframe: 1)}"></iframe><br><a href="#{user_slide_url(@slide.user, @slide)}">#{t(:brand)}</a>! %></code></pre>
 
   <div class="row">
     <div class="<%= col(12) %>">
