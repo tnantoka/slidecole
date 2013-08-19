@@ -51,7 +51,7 @@ en:
 
   created_at: Created at
   updated_at: Updated at
-  ago: ago
+  ago: ' ago'
   impression: Impression
   embed: Embed
 
