@@ -12,7 +12,7 @@
 <%= stylesheet_link_tag "/deck.js/extensions/status/deck.status", media: "all" %>
 <%= stylesheet_link_tag "/deck.js/extensions/hash/deck.hash", media: "all" %>
 
-<%= stylesheet_link_tag "/deck.js/themes/style/#{params[:theme].presence || 'web-2.0'}", media: "all", class: 'js_theme_link' %>
+<%= stylesheet_link_tag "/deck.js/themes/style/#{params[:theme].presence || 'default'}", media: "all", class: 'js_theme_link' %>
 <%= stylesheet_link_tag "/deck.js/themes/transition/#{params[:transition].presence || 'horizontal-slide'}", media: "all", class: 'js_transition_link' %>
 
 <%= stylesheet_link_tag "application", media: "all" %>
@@ -51,6 +51,7 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu text-left">
+            <li><a href="#" class="js_theme" data-theme="default">Default</a>
             <li><a href="#" class="js_theme" data-theme="web-2.0">Web 2.0</a>
             <li><a href="#" class="js_theme" data-theme="swiss">Swiss</a>
             <li><a href="#" class="js_theme" data-theme="neon">Neon</a>

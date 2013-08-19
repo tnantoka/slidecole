@@ -44,5 +44,10 @@ $ rails s -e production
     # 512 KB
     LimitRequestBody 512000
     
+## LICENSE
+
+Licensed under 
+The BSD 2-Clause License.    
+    
 &copy; 2013 [tnantoka](https://twitter.com/tnantoka)
 
